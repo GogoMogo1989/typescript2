@@ -1,6 +1,6 @@
 export class ListTemplate {
-    constructor(container) {
-        this.container = container;
+    constructor(a) {
+        this.container = a;
     }
     render(item, heading, pos) {
         const li = document.createElement('li');
