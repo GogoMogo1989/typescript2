@@ -1,4 +1,12 @@
-import {Invocie} from "./classes/invoice.js";
+import {Payment} from "./classes/payment";
+import {Invoice} from "./classes/invoice.js";
+import { HasFormatter } from "./interfaces/HasFormatter";
+
+/* let docOne: HasFormatter;
+let docTwo: HasFormatter;
+
+docOne =  new Invocie("yoshi", "web work", 20)
+docTwo = new Payment("mario", "plubing work", 200)
 
 const invOne  = new Invocie("mairo", "work on the  mario website", 250 )
 const invTwo  = new Invocie("Luigi", "work on the  luigi website", 2550 )
@@ -9,7 +17,7 @@ invoices.push(invTwo)
 
 invoices.forEach(inv => {
     console.log(inv.client, inv.details, inv.amount, inv.format())
-})
+}) */
 
 const form = document.querySelector(".new-item-form") as HTMLFormElement;
 
@@ -21,10 +29,12 @@ const amount = document.querySelector("#amount") as HTMLInputElement
 form.addEventListener("submit", (e: Event) => {
     e.preventDefault();
 
-    console.log(
-        type.value,
-        tofrom.value,
-        details.value,
-        amount.valueAsNumber,
-    )
+    let doc: HasFormatter;
+    if(type.value ==="invoice"){
+        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber)
+    }else{
+        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber)
+    }
+
+    console.log(doc)
 })
