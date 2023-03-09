@@ -17,7 +17,7 @@ export class ListTemplate {
 
         const p = document.createElement('p');
         p.innerText = item.format();
-        li.append(p);
+        li.append(h4);
 
         if(pos === 'start'){
             this.container.prepend(li)
